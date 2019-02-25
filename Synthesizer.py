@@ -7,9 +7,8 @@ import re
 import numpy as np
 
 '''
-Practical Programming Assignment
-Computer Programming for Speech and Language Processing
-Exam No. B136304 
+Speech Synthesiser Programme
+Author: Kexin GAO
 -----------------------------------INSTRUCTION--------------------------------------
 This is a speech synthesiser programme which can read the input text.
 You can either play the output, or save the output, or, for sure, do them both.
@@ -19,7 +18,6 @@ Have fun!
 ------------------------------------------------------------------------------------
 '''
 
-# NOTE: DO NOT CHANGE ANY OF THE EXISTING ARGUMENTS
 parser = argparse.ArgumentParser(
     description='A basic text-to-speech app that synthesises an input phrase using diphone unit selection.')
 parser.add_argument('--diphones', default="./diphones", help="Folder containing diphone wavs")
