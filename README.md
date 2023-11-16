@@ -1,4 +1,4 @@
-# A Daft Punk sound-like Speech-Synthesizer
+# A Daft Punk sound-like Speech-Synthesizer 🤖️
 A basic speech synthesizer that takes English text input and convert it into a concatenated speech.
 
 ## install requirement packages
