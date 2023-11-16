@@ -69,9 +69,10 @@ class Synth:
                     self.output = simpleaudio.Audio()
                     self.output.load(self.diphones[item])
                     array_list.append(self.output.data)
-                    self.output.data = np.append([items for sublist in array_list for items in sublist], self.output.data)
                 except Exception as exp:
-                    print("Error: {} is missing...".format(exp))
+                    pass
+                    # print("Error: {} is missing...".format(exp))
+            self.output.data = np.array([items for sublist in array_list for items in sublist])
             return self.output
 
     def set_volume(self, volume):
@@ -291,4 +292,4 @@ if __name__ == "__main__":
     # you need to modify out.data to produce the correct synthesis
     out = simpleaudio.Audio(rate=16000)
     out = diphone_synth.get_wavs()
-    print(out.data, type(out.data))
+    # print(out.data, type(out.data))
