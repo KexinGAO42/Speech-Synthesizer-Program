@@ -7,6 +7,7 @@ $ pip install -r requirements.txt
 ```
 
 ## try it 👽
+Testing on this [static page](https://vervet-perfect-completely.ngrok-free.app/)  or locally;
 ```bash
-$ python3 Synthesizer.py -p 'Harder, better, faster, stronger'
+$ python3 main.py -p 'Harder, better, faster, stronger'
 ```

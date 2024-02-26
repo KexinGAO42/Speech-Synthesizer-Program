@@ -1,3 +1,5 @@
+import os
+import time
 from flask import Flask, request, send_file, render_template
 from flask_restful import Resource, Api
 
@@ -15,16 +17,20 @@ class TextToSpeech(Resource):
         if not text:
             return {'error': 'Text parameter is required'}, 400
 
-        tts = gTTS(text)
-        tts.save('tmp.wav')
+        # --- Test using gTTS ---
+        # tts = gTTS(text)
+        # tts.save('tmp.wav')
+        # --- Test using gTTS ---
 
-        # utt = Utterance(text)
-        # phone_seq = utt.get_phone_seq()
-        # diphone_synth = Synth(phone_seq, wav_folder="./diphones")
-        # diphone_synth.save_output("tmp.wav")
+        utt = Utterance(text)
+        phone_seq = utt.get_phone_seq()
+        diphone_synth = Synth(phone_seq, wav_folder="./diphones")
+        wav_name = "tmp" + str(time.process_time()) + ".wav"
+        diphone_synth.save_output(wav_name)
 
         # Play audio in the browser
-        return send_file('tmp.wav', mimetype="audio/wav", as_attachment=True, download_name='audio.wav')
+        ret = send_file(wav_name, mimetype="audio/wav", as_attachment=True, download_name='audio.wav')
+        return ret
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -32,3 +38,4 @@ api.add_resource(TextToSpeech, '/text-to-speech')
 
 if __name__ == '__main__':
     app.run(debug=True)
+
